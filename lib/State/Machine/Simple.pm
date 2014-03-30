@@ -11,7 +11,7 @@ use Bubblegum::Constraints 'isa_hashref';
 
 use parent 'Exporter::Tiny';
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 our %CONFIGS;
 our @EXPORT_OK   = qw(at_state in_state topic);
@@ -23,7 +23,7 @@ sub BEGIN {
     my $target = caller;
     push @{"${target}::ISA"}, 'State::Machine';
     my $constructor = $target->can('new');
-    *{"${target}::new"} = sub { $constructor->(BUILDMACHINE(@_))};
+    *{"${target}::new"} = sub {$constructor->(BUILDMACHINE(@_))};
 }
 
 sub topic {
@@ -74,9 +74,12 @@ sub BUILDMACHINE {
 
         while (my($key, $val) = each %{$args{when}}) {
             my $result = $register{$val}
-                or State::Machine::Failure->throw(
-                    sprintf 'Transition (%s) cannot result in State (%s); '.
-                        'The state was not defined.', $key, $val
+                or State::Machine::Failure->raise(
+                    config  => $node,
+                    class   => 'simple',
+                    message => sprintf
+                        "Transition ($key) cannot result in the state ".
+                        "($val); The state was not defined.",
                 );
 
             my $trans  = State::Machine::Transition->new(
@@ -121,7 +124,7 @@ State::Machine::Simple - Simple State Machine DSL
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
@@ -132,6 +135,7 @@ version 0.02
     # light-switch circular-state example
 
     topic 'typical light switch';
+
     in_state 'is_off' => ( when => { turn_on => 'is_on' } );
     at_state 'is_on'  => ( when => { turn_off => 'is_off' } );
 

@@ -8,7 +8,7 @@ use Try::Tiny;
 
 use Bubblegum::Constraints -minimal;
 
-our $VERSION = '0.02'; # VERSION
+our $VERSION = '0.03'; # VERSION
 
 has 'name' => (
     is       => 'ro',
@@ -39,8 +39,10 @@ sub add_transition {
         return $trans;
     }
 
-    State::Machine::Failure->throw(
-        'Transition was not found.'
+    # transition not found
+    State::Machine::Failure->raise(
+        class   => 'transition/unknown',
+        message => 'Transition is unknown.',
     );
 }
 
@@ -52,8 +54,10 @@ sub remove_transition {
         return $self->transitions->delete($name);
     }
 
-    State::Machine::Failure->throw(
-        'Transition was not found.'
+    # transition not found
+    State::Machine::Failure->raise(
+        class   => 'transition/unknown',
+        message => 'Transition is unknown.',
     );
 }
 
@@ -71,7 +75,7 @@ State::Machine::State - State Machine State Class
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 

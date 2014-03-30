@@ -10,6 +10,11 @@ README.mkdn
 cpanfile
 lib/State/Machine.pm
 lib/State/Machine/Failure.pm
+lib/State/Machine/Failure/Simple.pm
+lib/State/Machine/Failure/Transition.pm
+lib/State/Machine/Failure/Transition/Execution.pm
+lib/State/Machine/Failure/Transition/Hook.pm
+lib/State/Machine/Failure/Transition/Unknown.pm
 lib/State/Machine/Simple.pm
 lib/State/Machine/State.pm
 lib/State/Machine/Transition.pm
