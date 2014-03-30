@@ -9,7 +9,7 @@ use Class::Load 'load_class';
 
 extends 'Bubblegum::Exception';
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 has 'explain' => (
     is  => 'ro',

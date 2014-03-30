@@ -11,7 +11,7 @@ use Bubblegum::Constraints 'isa_hashref';
 
 use parent 'Exporter::Tiny';
 
-our $VERSION = '0.03'; # VERSION
+our $VERSION = '0.04'; # VERSION
 
 our %CONFIGS;
 our @EXPORT_OK   = qw(at_state in_state topic);
@@ -124,7 +124,7 @@ State::Machine::Simple - Simple State Machine DSL
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
