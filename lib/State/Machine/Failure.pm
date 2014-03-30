@@ -5,6 +5,6 @@ use Bubblegum::Class;
 
 extends 'Bubblegum::Exception';
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 1;
