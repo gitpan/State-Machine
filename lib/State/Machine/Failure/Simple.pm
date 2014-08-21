@@ -2,15 +2,16 @@
 package State::Machine::Failure::Simple;
 
 use Bubblegum::Class;
-use Bubblegum::Constraints -minimal;
+use Function::Parameters;
+use Bubblegum::Constraints 'typeof_arrayref';
 
 extends 'State::Machine::Failure';
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 has config => (
     is       => 'ro',
-    isa      => _arrayref,
+    isa      => typeof_arrayref,
     required => 1
 );
 
