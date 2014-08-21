@@ -6,7 +6,7 @@ use Function::Parameters;
 
 extends 'State::Machine::Failure';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 method _build_message {
     "Transition unknown."

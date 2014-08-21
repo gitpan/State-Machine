@@ -8,10 +8,9 @@ use State::Machine::Failure::Transition::Missing;
 use State::Machine::Failure::Transition::Unknown;
 use Try::Tiny;
 
-use Bubblegum::Constraints map "typeof_$_",
-    qw(string hashref object integer);
+use Bubblegum::Constraints -typesof;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 has 'state' => (
     is       => 'rw',
@@ -28,6 +27,13 @@ has 'topic' => (
 method apply {
     my $state = $self->state;
     my $next  = shift // $state->next;
+
+    if ($state && !$next) {
+        # deduce transition unless defined
+        if ($state->transitions->keys->count == 1) {
+            $next = $state->transitions->keys->get(0);
+        }
+    }
 
     # cannot transition
     State::Machine::Failure::Transition::Missing->throw
@@ -79,7 +85,7 @@ State::Machine - Simple State Machine Implementation
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

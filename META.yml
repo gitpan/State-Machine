@@ -23,5 +23,5 @@ resources:
   bugtracker: https://github.com/alnewkirk/State-Machine/issues
   homepage: http://metacpan.org/release/State-Machine/
   repository: git://github.com/alnewkirk/State-Machine.git
-version: 0.05
+version: 0.06
 x_authority: cpan:AWNCORP

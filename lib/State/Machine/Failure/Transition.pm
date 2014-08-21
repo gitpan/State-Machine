@@ -2,11 +2,11 @@
 package State::Machine::Failure::Transition;
 
 use Bubblegum::Class;
-use Bubblegum::Constraints 'typeof_object', 'typeof_string';
+use Bubblegum::Constraints -typesof;
 
 extends 'State::Machine::Failure';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 has transition_name => (
     is       => 'ro',

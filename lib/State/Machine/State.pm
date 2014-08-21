@@ -7,10 +7,9 @@ use State::Machine::Failure::Transition::Unknown;
 use State::Machine::Transition;
 use Try::Tiny;
 
-use Bubblegum::Constraints map "typeof_$_",
-    qw(string hashref object);
+use Bubblegum::Constraints -typesof;
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 has 'name' => (
     is       => 'ro',
@@ -73,7 +72,7 @@ State::Machine::State - State Machine State Class
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

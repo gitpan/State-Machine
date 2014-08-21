@@ -9,19 +9,23 @@ use State::Machine::Transition;
 
 use parent 'Exporter::Tiny';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 our %CONFIGS;
 our @EXPORT_OK   = qw(at_state in_state topic);
 our %EXPORT_TAGS = (dsl => \@EXPORT_OK);
 
-sub BEGIN {
+sub import {
+    my $class  = shift;
+    my $target = caller;
+
     no strict 'refs';
     no warnings 'redefine';
-    my $target = caller;
     push @{"${target}::ISA"}, 'State::Machine';
     my $constructor = $target->can('new');
-    *{"${target}::new"} = sub {$constructor->(BUILDMACHINE(@_))};
+
+    *{"${target}::new"} = sub { $constructor->(BUILDMACHINE(@_)) };
+    $class->next::method({into => $target}, @_);
 }
 
 sub topic {
@@ -50,7 +54,7 @@ sub BUILDMACHINE {
     my $init  = $config->get('at_state')->get(0)->first;
     my $root  = State::Machine::State->new(name => $init);
     my $topic = $config->get('topic')->get(0)->first;
-    my $nodes = $config->get('in_state');
+    my $nodes = [$config->get('at_state')->list, $config->get('in_state')->list];
 
     my %register = ($init => $root);
 
@@ -121,7 +125,7 @@ State::Machine::Simple - Simple State Machine DSL
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 

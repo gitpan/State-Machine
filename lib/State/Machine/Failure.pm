@@ -4,11 +4,11 @@ package State::Machine::Failure;
 use Bubblegum::Class;
 use Function::Parameters;
 
-use Bubblegum::Constraints 'typeof_string';
+use Bubblegum::Constraints -typesof;
 
 extends 'Throwable::Error';
 
-our $VERSION = '0.05'; # VERSION
+our $VERSION = '0.06'; # VERSION
 
 has 'message' => (
     is      => 'ro',
