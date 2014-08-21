@@ -8,7 +8,7 @@ use Bubblegum::Constraints -typesof;
 
 extends 'Throwable::Error';
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 has 'message' => (
     is      => 'ro',

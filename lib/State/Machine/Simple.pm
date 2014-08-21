@@ -9,7 +9,7 @@ use State::Machine::Transition;
 
 use parent 'Exporter::Tiny';
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 our %CONFIGS;
 our @EXPORT_OK   = qw(at_state in_state topic);
@@ -125,7 +125,7 @@ State::Machine::Simple - Simple State Machine DSL
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

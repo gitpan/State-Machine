@@ -9,7 +9,7 @@ use Try::Tiny;
 
 use Bubblegum::Constraints -typesof;
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 has 'name' => (
     is       => 'ro',
@@ -98,7 +98,7 @@ State::Machine::Transition - State Machine State Transition Class
 
 =head1 VERSION
 
-version 0.06
+version 0.07
 
 =head1 SYNOPSIS
 

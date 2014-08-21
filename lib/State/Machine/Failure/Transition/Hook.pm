@@ -8,7 +8,7 @@ use Bubblegum::Constraints 'typeof_string';
 
 extends 'State::Machine::Failure::Transition';
 
-our $VERSION = '0.06'; # VERSION
+our $VERSION = '0.07'; # VERSION
 
 has hook_name => (
     is       => 'ro',
